@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             {
                 echo"<script>
                 alert('เพิ่มสินค้าส่ตระกร้า');
-                window.location.href='mycart.php';
+                window.location.href='index.php?Menu=3&Submenu=buyorder';
                 </script>";
             }
             else
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             $_SESSION['cart'][$count]=array('Cactusname'=>$_POST['Cactusname'],'Cactusprice'=>$_POST['Cactusprice'],'Quantity'=>1);
             echo"<script>
             alert('เพิ่มสินค้าส่ตระกร้า');
-            window.location.href='mycart.php';
+            window.location.href='index.php?Menu=3&Submenu=buyorder';
             </script>";
         }
         }
@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             $_SESSION['cart'][0]=array('Cactusname'=>$_POST['Cactusname'],'Cactusprice'=>$_POST['Cactusprice'],'Quantity'=>1);
             echo"<script>
             alert('เพิ่มสินค้าส่ตระกร้า');
-            window.location.href='mycart.php';
+            window.location.href='index.php?Menu=3&Submenu=buyorder';
             </script>";
         }
     }
@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 $_SESSION['cart']=array_values($_SESSION['cart']);
                 echo"<script>
                     alert('ลบสินค้าในตระกร้า');
-                    window.location.href='mycart.php';
+                    window.location.href='index.php?Menu=3&Submenu=buyorder';
                 </script>";
             }
         }
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 $_SESSION['cart'][$key]['Quantity']=$_POST['Mod_Quantity'];
                 // print_r($_SESSION['cart']);
                 echo "<script>
-                    window.location.href='mycart.php';
+                    window.location.href='index.php?Menu=3&Submenu=buyorder';
                 </script>";
             }
         }

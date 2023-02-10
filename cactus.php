@@ -156,7 +156,7 @@ if (!empty($_GET["action"])) {
 
 <body>
   <div>
-    
+
   </div>
   <div id="product-grid">
 
@@ -179,20 +179,22 @@ if (!empty($_GET["action"])) {
           <img src="upload/<?php echo $row['image']; ?>" alt="image" class="img">
         </div>
         <div class="product-title-footer">
-          <div name="Cactusname" value="<?php echo $row["Cactusname"]; ?>" class="product-title"><?php echo $row["Cactusname"]; ?></div>
-          <div class="product-details"> - <?php echo $row["Cactusdetail"]; ?></div>
-          <div name="Cactusprice" value="<?php echo $row["Cactusprice"]; ?>" class="product-price"><?php echo $row["Cactusprice"]; ?> THB </div>
+          <div name="Cactusname" value="<?php echo $row['Cactusname']; ?>" class="product-title"><?php echo $row['Cactusname']; ?></div>
+          <div class="product-details"> - <?php echo $row['Cactusdetail']; ?></div>
+          <div name="Cactusprice" value="<?php echo $row['Cactusprice']; ?>" class="product-price"><?php echo $row['Cactusprice']; ?> THB </div>
 
-          <div class="cart-action">
-            <?php
-            if (isset($_SESSION['user_ID'])) { ?>
-              <input type="text" class="product-quantity" name="quantity" value="1" size="2">
-              <input type="Submit" name="Add_To_Cart" class="btnAddAction" value="สั่งซื้อสินค้า">
-            <?php } else {
-              echo "";
-            }
-            ?>
-          </div>
+          <input type="hidden" name="Cactusname" value="<?php echo $row['Cactusname']; ?>">
+          <input type="hidden" name="Cactusprice" value="<?php echo $row['Cactusprice']; ?>">
+          <!-- <input type="text" class="product-quantity" name="quantity" value="1" size="2"> -->
+          <?php
+          if (isset($_SESSION['user_ID'])) { ?>
+            <input type="Submit" name="Add_To_Cart" class="btnAddAction" value="หยิบลงตะกร้า">
+
+          <?php } else {
+            echo "";
+          }
+          ?>
+
         </div>
       </form>
     </div>

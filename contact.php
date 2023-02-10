@@ -245,13 +245,7 @@
             </div>
 
 
-            <h5>ที่อยู่</h5>
-            <div class="w3-row w3-section">
-              <div class="w3-col" style="width:50px" height="200px"><i class='fas fa-home' style='font-size:30px'></i></div>
-              <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['adderss']; ?></text>
-              </div>
-            </div>
+           
           </div>
 
 

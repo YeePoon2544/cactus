@@ -1,54 +1,5 @@
 <?php
-
 session_start();
-
-// if (!empty($_GET["action"])) {
-//   switch ($_GET["action"]) {
-//     case "add";
-//       if (!empty($_POST["quantity"])) {
-//         $productByCode = $db_handle->runQuery("SELECT * FROM cactus WHERE code='" . $_GET["code"] . "'");
-//         $itenArray = array($product_array[0]["code"] => (array(
-//           'name' => $product_array[0]["name"],
-//           'code' => $product_array[0]["code"],
-//           'quantity' =>$_POST["quantity"],
-//           'price' => $product_array[0]["price"],
-//           'image' => $product_array[0]["image"]
-//         )));
-//       }
-//       if (!empty($_SESSION["cart_item"])) {
-//         if (in_array($product_array[0]["code"], array_keys($_SESSION["cart_item"]))) {
-//           foreach ($_SESSION["cart_item"] as $k => $v) {
-//             if ($productByCode[0]["code"] === $k) {
-//               if (empty($_SESSION["cart_item"][$k]["quantity"])) {
-//                 $_SESSION["cart_item"][$k]["quantity"] = 0;
-//               }
-//               $_SESSION["cart"][$k]["quantity"] += $_POST["quantity"];
-//             }
-//           }
-//         } else {
-//           $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itenArray);
-//         }
-//       } else {
-//         $_SESSION["cart_itme"] = $itenArray;
-//       }
-//       break;
-//     case "remove";
-//       if (!empty($_SESSION["cart_item"])) {
-//         foreach ($_SESSION["cart_item"] as $k => $v) {
-//           if ($_GET["code"] == $k)
-//             unset($_SESSION["cart_item"][$k]);
-
-//           if (!empty($_SESSION["cart_item"]))
-//             unset($_SESSION["cart_item"]);
-//         }
-//       }
-//       break;
-//   }
-// }
-
-
-
-
 ?>
 
 
@@ -143,6 +94,9 @@ button{
     width: 50%;
     font-size: 18px;
 }
+.col-lg-9{
+    margin-top: 3%;
+}
     
 </style>
 
@@ -151,76 +105,158 @@ button{
 
     <div class="tex-heading">: รายการสั่งซื้อสินค้า :</div>
   </div>
-<?php 
-
-    if(isset($_SESSION["cart_item"])){
-        $total_quantity = 0;
-        $total_price = 0;
-
-    
-
-?>
-    <table class="tbl-cart" cellpadding="10" cellspacing="1">
-        <tbody>
-            <tr class="tr">
-                <th>#</th>
-                <th>Picture</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Price</th>
-                <th>Remove</th>
+ <!-- <form action="" method="POST" class="order"> -->
+ <div class="col-lg-9">
+    <table class="table">
+        <thead class="text-center">
+            <tr>
+                <th scope="col">หมายเลข</th>
+                <th scope="col">ชื่อสินค้า</th>
+                <th scope="col">ราคาสินค้า</th>
+                <th scope="col">จำนวน</th>
+                <th scope="col">ราคารวม</th>
+                <th scope="col">ลบสินค้า</th>
+                <!-- <th scope="col"></th> -->
             </tr>
+        </thead>
+        <tbody class="text-center">
+            <?php
+            // $total = 0;
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $key => $value) {
+                    $sr = $key + 1;
+                    // $total = $total + $value['price'];
+                    // print_r($value);
+                    echo "
+                                <tr>
+                                    <td>$sr</td>
+                                    <td>$value[Cactusname]<input type='hidden' name='Cactusname'></td>
+                                    <td>$value[Cactusprice] บาท<input type='hidden' name='Cactusprice' class='iprice' value='$value[Cactusprice]'></td>
+                                    <td>
+                                        <form action='manage_cart.php' method='POST'>
+                                            <input class='text-center iquantity' name='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[Quantity]' min='1' max='10'>
+                                            <input type='hidden' name='Cactusname' value='$value[Cactusname]'>
+                                         </form>
+                                    </td>
+                                    <td class='itotal'></td>
+                                    <td>
+                                    <form action='manage_cart.php' method='POST'>
+                                        <button name='Remove_Item' class='btn btn-sm btn-outline-danger'>ลบสินค้า</button>
+                                        <input type='hidden' name='Cactusname' value='$value[Cactusname]'>
+                                    </form>
+                                    </td>
+                                </tr>
 
-            <?php 
-
-                foreach($_SESSION["cart_item"] as $item) {
-                    $item_price = $item["quantity"] * $item["price"];
-                
-
-            ?>
-            <tr bgcolor="#FFFFFF">
-                <td><?php echo $item["ID"]; ?></td>
-                <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image"></td>
-                <td><?php echo $item["name"]; ?></td>
-                <td><?php echo $item["code"]; ?></td>
-                <td><?php echo $item["quantity"]; ?> THB</td>
-                <td><?php echo number_format($item["price"], 2); ?> THB </td>
-                <td><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><i class='fa fa-trash' style='font-size:20px'></i></a></td>
-            </tr>
-
-            <?php 
-
-                $total_quantity += $item["quantity"];
-                $total_price += ($item["price"] * $item["quantity"]);
-                
+                                ";
                 }
-
+            }
             ?>
-
-            <tr bgcolor="#FFFFFF">
-                <td colspan="3" style="text-align: right;">Total :</td>
-                <td><?php echo $total_quantity; ?></td>
-                <td style="text-align: right;" colspan="2"><?php echo number_format($total_price, 2); ?> THB</td>
-                <td></td>
-               
-            </tr>
+        
         </tbody>
     </table>
-    <?php 
-    
-                } else {
-    
-    ?>
-    <div class="no-records">Your Cart Is Empty</div>
-<?php 
-                }
+</div>
+
+<div class="col-lg-5">
+    <div class="border bg-light rounded p-4">
+
+        <form action="purchase.php" method="POST">
+            <h4> : รวมทั้งหมด :</h4>
+
+            <b>ราคา</b>
+            <p class="form-control" id="gtotal" name="gtotal"></p>
+            <input  type="hidden" name="total" id="total">
+
+
+           
+            <?php
+
+$sql = "SELECT * FROM  user ORDER BY user_ID ASC";
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_array($result)) {
+
+
+
 
 ?>
-    <div>
-        <button><a href="index.php?Menu=3&Submenu=pay"><i class='fas fa-check-circle' style='font-size:20px'> ชำระเงิน </i></button>
-    </div>
+            <?php
 
+            if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+
+            ?>
+
+                <!-- <input type="hidden" name="order_date"> -->
+
+                <div class="form-group">
+                    <b>ชื่อ-นามสกุล</b>
+                    <text class="form-control"><?php echo $row['name']; ?> <?php echo $row['lastname']; ?></text>
+                </div>
+                <div class="form-group">
+                    <b>เบอร์โทร</b>
+                    <text class="form-control"><?php echo $row['telephone']; ?></text>
+                </div>
+                <div class="form-group">
+                    <b>ที่อยู่</b>
+                    <text class="form-control"><?php echo $row['address']; ?> </text>
+                </div>
+               
+                <br>
+                <button class="btn btn-primary btn-block" name="purchase">ยืนยันการสั่งซื้อ</button>
+        </form>
+    <?php
+            }
+    ?>
+    </div>
+</div>
+
+
+<?php
+  }
+  ?>
+
+
+
+<script>
+    var gt = 0;
+    var iprice = document.getElementsByClassName('iprice');
+    var iquantity = document.getElementsByClassName('iquantity');
+    var itotal = document.getElementsByClassName('itotal');
+    var gtotal = document.getElementById('gtotal');
+    var total = document.getElementById('total');
+    // var exampleCheck1 = document.getElementById('exampleCheck1');
+    // var exampleCheck2 = document.getElementById('exampleCheck2');
+    // var exampleCheck3 = document.getElementById('exampleCheck3');
+
+    function subTotal() {
+        gt = 0;
+        for (i = 0; i < iprice.length; i++) {
+            // exampleCheck1 = 10;
+            itotal[i].innerText = (iprice[i].value) * (iquantity[i].value)
+            gt = gt + (iprice[i].value) * (iquantity[i].value);
+
+            // + (exampleCheck1);ems1
+            // price 650  iquantity  1 gt=0+(650*1)
+            // price 750  iquantity  2 gt=650+(750*2)    === gt=2150
+            // price 850  iquantity  1 gt=2150+(850*1)   ==== gt=3000
+        }
+        gtotal.innerText = gt;
+        total.value = gt; //เก็บค่า รวมทั้งหมด 
+
+    }
+
+    subTotal();
+</script>
+
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/counter.js"></script>
+<script src="js/custom.js"></script>
+</body>
+
+</html>
 
     
 </body>

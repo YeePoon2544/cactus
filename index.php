@@ -28,8 +28,8 @@ if ($Menu == "1") {
   }
 } else if ($Menu == "3") {
   $selected4 = "class='selected'";
-  if ($Submenu == "mycart.php") {
-    $Fileshow = "mycart.php";
+  if ($Submenu == "buyorder") {
+    $Fileshow = "buyorder.php";
   } else if ($Submenu == "pay") {
     $Fileshow = "pay.php";
   }
@@ -135,8 +135,7 @@ if ($Menu == "1") {
   .menu {
 
     position: relative;
-
-    width: 60%;
+    width: 58%;
     border-radius: 7px;
   }
 
@@ -187,12 +186,10 @@ if ($Menu == "1") {
                 $count = count($_SESSION['cart']);
               }
               ?>
-              <!-- <a href="mycart.php" class="btn btn-outline-success">ตระกร้าของฉัน (php echo $count; ?>)</a> -->
-
               <li>
               <?php
                 if (isset($_SESSION['user_ID'])) { ?>
-                 <a href='index.php?Menu=5&Submenu=mycart' class="sub-menu" onclick="location">ตะกร้าสินค้าของฉัน (<?php echo $count; ?>)</a></li>
+                 <a href='index.php?Menu=3&Submenu=buyorder' class="sub-menu" onclick="location">ตะกร้าสินค้าของฉัน (<?php echo $count; ?>)</a></li>
 
                  <?php } else { ?>
                   <?php } ?>
@@ -238,63 +235,6 @@ if ($Menu == "1") {
     ?>
 
   </div>
-
- <!-- <form action="" method="POST" class="order"> -->
- <div class="col-lg-9">
-                <table class="table">
-                    <thead class="text-center">
-                        <tr>
-                            <th scope="col">หมายเลข</th>
-                            <th scope="col">ชื่อสินค้า</th>
-                            <th scope="col">ราคาสินค้า</th>
-                            <th scope="col">จำนวน</th>
-                            <th scope="col">ราคารวม</th>
-                            <!-- <th scope="col"></th> -->
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <?php
-                        // $total = 0;
-                        if (isset($_SESSION['cart'])) {
-                            foreach ($_SESSION['cart'] as $key => $value) {
-                                $sr = $key + 1;
-                                // $total = $total + $value['price'];
-                                // print_r($value);
-                                echo "
-                                <tr>
-                                    <td>$sr</td>
-                                    <td>$value[Cactusname]<input type='hidden' name='Cactusname'></td>
-                                    <td>$value[Cactusprice] บาท<input type='hidden' name='Cactusprice' class='iprice' value='$value[Cactusprice]'></td>
-                                    <td>
-                                        <form action='manage_cart.php' method='POST'>
-                                            <input class='text-center iquantity' name='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[Quantity]' min='1' max='10'>
-                                            <input type='hidden' name='Cactusname' value='$value[Cactusname]'>
-                                         </form>
-                                    </td>
-                                    <td class='itotal'></td>
-                                    <td>
-                                    <form action='manage_cart.php' method='POST'>
-                                        <button name='Remove_Item' class='btn btn-sm btn-outline-danger'>ลบสินค้า</button>
-                                        <input type='hidden' name='Cactusname' value='$value[Cactusname]'>
-                                    </form>
-                                    </td>
-                                </tr>
-
-                                ";
-                            }
-                        }
-                        ?>
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>                -->
-                    </tbody>
-                </table>
-            </div>
-
-
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/tiny-slider.js"></script>
   <script src="js/aos.js"></script>
