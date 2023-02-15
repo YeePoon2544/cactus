@@ -1,0 +1,102 @@
+
+.heading-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+
+.modal-content {
+    background-color:  #EEEEEE   ;
+}
+
+.select-disabled:hover {
+    cursor: not-allowed;
+}
+
+.text-input-address {
+    border: 0;
+    padding: 0.4rem 1rem;
+    width: 100%;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid gainsboro;
+    margin: 0.2rem 0;
+    outline: none;
+}
+
+.text-input-address:focus {
+    border: 1px solid #2196F3;
+}
+
+.text-input-address::placeholder {
+    color: #BDC3C7;
+}
+
+.text-input-address:focus::placeholder {
+    color: gainsboro;
+}
+
+
+.select-option-address {
+    width: 100%;
+    border: 1px solid gainsboro;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    margin: 0.2rem 0;
+    outline: none;
+}
+
+.select-option-address>option {
+    font-weight: bold;
+}
+
+
+
+.text-address-label {
+    color: #1565C0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+.action-btn {
+    outline: 0;
+    padding: 0.4rem 1rem;
+    border: 0;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.action-btn:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+#submit-address {
+    background-color: #1565C0;
+    color: white;
+}
+
+#cancel-submit {
+    color: white;
+    background-color: #34495E;
+}
+
+#delete-address {
+    color: var(--bg-primary);
+    border: none;
+    background: none;
+}
+
+.edit-address {
+    color: #34495E;
+    background: none;
+}
+
+
+.address-empty {
+    margin-top: 1rem;
+    color: #566573 ;
+    font-weight: bold;
+    padding: 0 1rem;
+}

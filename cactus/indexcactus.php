@@ -85,10 +85,10 @@
         <tr>
             <td><?php echo $row['Cactus_ID']; ?></td>
             <td><img id="showimg" src="upload/<?php echo $row['image']; ?>" style="height:120px; width:100px;"></td>
-            <td><?php echo $row['Cactusname']; ?></td>
+            <td><?php echo $row['productname']; ?></td>
             <td><?php echo $row['Cactusdetail']; ?></td>
             <td>10</td>
-            <td><?php echo $row['Cactusprice']; ?></td>
+            <td><?php echo $row['productprice']; ?></td>
             <td><a href='admin.php?Menu=1&Submenu=editcactus&ID=<?php echo $row['Cactus_ID']; ?>'><button type="button" class="btn btn-warning"><i class='far fa-edit' style='font-size:22px'></i></button></a></td>
             <td><a href='cactus/deletecactus.php?ID=<?php echo $row['Cactus_ID']; ?>'><button type="button" class="btn btn-danger"><i class='fas fa-eraser' style='font-size:22px'></i></button></a></td>
         </tr>

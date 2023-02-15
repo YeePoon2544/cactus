@@ -79,7 +79,7 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class='fas fa-pen' style='font-size:36px'></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="Cactusname" type="text" placeholder="ชื่อแคคตัส" required >
+                <input class="w3-input w3-border" name="productname" type="text" placeholder="ชื่อแคคตัส" required >
             </div>
         </div>
 
@@ -95,7 +95,7 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class='fas fa-dollar-sign' style='font-size:36px'></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="Cactusprice" type="text" placeholder="ราคาแคคตัส" required>
+                <input class="w3-input w3-border" name="productprice" type="text" placeholder="ราคาแคคตัส" required>
             </div>
         </div>
 

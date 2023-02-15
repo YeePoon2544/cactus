@@ -19,7 +19,7 @@
     } else {
         $passwordenc = md5($password);
 
-        $sql = "INSERT INTO user (name, lastname, username, mail, password, confirmpassword, userlevel  )
+        $sql = "INSERT INTO user (name, lastname, username, mail, password, confirmpassword, userlevel )
         VALUE ('$name', ' $lastname', '$username', '$email', '$passwordenc', '$confirmpassword', 'm')";
         $result = mysqli_query($conn, $sql);
 

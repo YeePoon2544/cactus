@@ -2,53 +2,6 @@
 
 session_start();
 
-if (!empty($_GET["action"])) {
-  switch ($_GET["action"]) {
-    case "add";
-      if (!empty($_POST["quantity"])) {
-        $productByCode = $db_handle->runQuery("SELECT * FROM cactus WHERE code='" . $_GET["code"] . "'");
-        $itemArray = array($product_array[0]["code"] => (array(
-          'name' => $product_array[0]["name"],
-          'code' => $product_array[0]["code"],
-          'quantity' => $product_array[0]["quantity"],
-          'price' => $product_array[0]["price"],
-          'image' => $product_array[0]["image"]
-        )));
-      }
-      if (!empty($_SESSION["cart_item"])) {
-        if (in_array($product_array[0]["code"], array_keys($_SESSION["cart_item"]))) {
-          foreach ($_SESSION["cart_item"] as $k => $v) {
-            if ($productByCode[0]["code"] === $k) {
-              if (empty($_SESSION["cart_item"][$k]["quantity"])) {
-                $_SESSION["cart_item"][$k]["quantity"] = 0;
-              }
-              $_SESSION["cart"][$k]["quantity"] += $_POST["quantity"];
-            }
-          }
-        } else {
-          $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
-        }
-      } else {
-        $_SESSION["cart_itme"] = $itemArray;
-      }
-      break;
-    case "remove";
-      if (!empty($_SESSION["cart_item"])) {
-        foreach ($_SESSION["cart_item"] as $k => $v) {
-          if ($_GET["code"] == $k)
-            unset($_SESSION["cart_item"][$k]);
-
-          if (!empty($_SESSION["cart_item"]))
-            unset($_SESSION["cart_item"]);
-        }
-      }
-      break;
-  }
-}
-
-
-
-
 ?>
 
 
@@ -164,6 +117,7 @@ if (!empty($_GET["action"])) {
   </div>
   <?php
 
+
   $sql = "SELECT * FROM  cactus ORDER BY Cactus_ID ASC";
   $result = mysqli_query($conn, $sql);
 
@@ -174,20 +128,20 @@ if (!empty($_GET["action"])) {
 
   ?>
     <div class="product-item">
-      <form action="manage_cart.php" method="POST">
+      <form action="manage_cart.php?" method="POST">
         <div class="product-image">
           <img src="upload/<?php echo $row['image']; ?>" alt="image" class="img">
         </div>
         <div class="product-title-footer">
-          <div name="Cactusname" value="<?php echo $row['Cactusname']; ?>" class="product-title"><?php echo $row['Cactusname']; ?></div>
+          <div name="productname"  class="product-title"><?php echo $row['productname']; ?></div>
           <div class="product-details"> - <?php echo $row['Cactusdetail']; ?></div>
-          <div name="Cactusprice" value="<?php echo $row['Cactusprice']; ?>" class="product-price"><?php echo $row['Cactusprice']; ?> THB </div>
+          <div name="productprice"  class="product-price"><?php echo $row['productprice']; ?> THB </div>
 
-          <input type="hidden" name="Cactusname" value="<?php echo $row['Cactusname']; ?>">
-          <input type="hidden" name="Cactusprice" value="<?php echo $row['Cactusprice']; ?>">
+          <input type="hidden" name="productname" value="<?php echo $row['productname']; ?>">
+          <input type="hidden" name="productprice" value="<?php echo $row['productprice']; ?>">
           <!-- <input type="text" class="product-quantity" name="quantity" value="1" size="2"> -->
           <?php
-          if (isset($_SESSION['user_ID'])) { ?>
+          if (isset($_SESSION['User_ID'])) { ?>
             <input type="Submit" name="Add_To_Cart" class="btnAddAction" value="หยิบลงตะกร้า">
 
           <?php } else {

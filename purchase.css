@@ -1,0 +1,169 @@
+:root {
+    --bg-primary: #0D47A1;
+    --bg-secondary: #1565C0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a.order-link {
+    color: black;
+}
+
+body {
+    background-color: #ECF0F1;
+}
+
+#purchase {
+    background-color: #FDFEFE;
+}
+
+.purchase-navigation-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: max-content;
+    background-color: #D6DBDF ;
+    border-bottom: 1px solid gainsboro;
+}
+
+
+.purchase-item-link {
+    color: #566573;
+    font-weight: bold;
+    background: none;
+    border: 0;
+    outline: 0;
+    margin-left: 7px;
+    font-size: 1rem;
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchase-item-link:first-child {
+    margin-left: 0;
+}
+
+.purchase-item-link:last-child {
+    margin-right: 0;
+}
+
+.purchase-item-link:hover {
+    color: #85929E;
+    filter: brightness(90%);
+}
+
+
+.purchase-item-link.purchase-active {
+    background-color: #FDFEFE;
+    color: var(--bg-secondary);
+
+}
+
+.purchase-item-link:hover.purchase-active {
+    filter: brightness(100%);
+}
+
+.purchase-main {
+    padding: 12px 1rem;
+}
+
+.product-img {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.img-file {
+    width: 100%;
+    height: 100%;
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.total {
+    padding: 0;
+    height: 4rem;
+}
+
+.total> :first-child span {
+    color: red;
+    font-size: 1.2rem;
+}
+
+.product-quantity {
+    color: var(--bg-secondary);
+    font-weight: bold;
+}
+
+.product-order-item {
+    margin: 1rem 0;
+    z-index: -10;
+    padding: 1rem;
+    border-radius: 7px;
+    background-color: #F4F6F7;
+    border: 1px solid gainsboro;
+}
+
+.product-order-item:hover {
+    cursor: pointer;
+    opacity: 0.8;
+
+}
+
+.active {
+    display: block;
+}
+
+.data-empty {
+    background-color: #ABB2B9;
+    height: 16rem;
+}
+
+.empty {
+    color: red;
+}
+
+.icon-empty {
+    font-size: 4rem;
+}
+
+.text-empty {
+    font-size: 1.4rem;
+}
+
+.empty-purchase {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1rem;
+    color: #85929E;
+    height: 12rem;
+    justify-content: center;
+}
+
+.empty-purchase i {
+
+    font-size: 4rem;
+    margin-bottom: 1rem;
+
+}
+
+.section-detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-id-title {
+    color: var(--bg-secondary);
+}
+
+.grand-total {
+    font-weight: bold;
+    color: #F44336;
+}

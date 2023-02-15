@@ -1,9 +1,9 @@
-<!-- /*
-* Template Name: Property
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,6 +58,7 @@
   .ss {
     font-size: 20px;
     color: black;
+    height: 100%;
   }
 
   h5,
@@ -106,7 +107,7 @@
 
   .block-2 {
     width: 560px;
-    height: 350px;
+    height: 355px;
     margin: 10px;
     background: #FFCC99;
     float: right;
@@ -117,20 +118,25 @@
 </style>
 
 <body>
+  
 <?php
-
-  $sql = "SELECT * FROM  user ORDER BY user_ID ASC";
+  $user = $_SESSION['User_ID'];
+  $sql = "SELECT * FROM  user WHERE user_ID = '$user_ID'";
   $result = mysqli_query($conn, $sql);
-
-  while ($row = mysqli_fetch_array($result)) {
-
-
-
-
+  $num_row = $result->num_rows;
   ?>
+    <!-- <section>
+        <php while ($row = $result->fetch_assoc()) {
+            $name = $row['name'];
+            $lastname = $row['lastname'];
+            $username =$row['username'];
+            $mail = $row['mail'];
+            $telephone = $row['telephone'];
+            $confirmpassword =$row['confirmpassword'];
+            $address =$row['address'];
+        ?> -->
   <div class="card ">
     <div class="pp">
-      <div>
         <h2 class="w3-center">ข้อมูลส่วนตัว</h2>
 
 
@@ -153,44 +159,50 @@
                 
               <form>
                         <div class="form-group">
-                           <label for="exampleInputName">ชื่อ-นามสกุล</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล" >
+                           <label for="exampleInputName">ชื่อ</label>
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล" value="<?php echo $row['name']; ?> <?php echo $row['lastname']; ?>">
 
                         </div>
 
                         <div class="form-group">
+                           <label for="exampleInputName">ชื่อ</label>
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล" value="<?php echo $row['lastname']; ?> <?php echo $row['lastname']; ?>">
+
+                        </div>
+                        
+                        <div class="form-group">
                            <label for="exampleInputName">ชื่อผู้ใช้งาน</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ชื่อผู้ใช้งาน">
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ชื่อผู้ใช้งาน" value="<?php echo $row['username']; ?>">
 
                         </div>
 
                         <div class="form-group">
                            <label for="exampleInputName">อีเมลผู้ใช้งาน</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="อีเมลผู้ใช้งาน">
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="อีเมลผู้ใช้งาน" value="<?php echo $row['mail']; ?>">
 
                         </div>
 
                         <div class="form-group">
                            <label for="exampleInputName">เบอร์โทรศัพท์</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เบอร์โทรศัพท์">
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เบอร์โทรศัพท์" value="<?php echo $row['telephone']; ?>">
 
                         </div>
                         
                         <div class="form-group">
                            <label for="exampleInputName">รหัสผ่าน</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="รหัสผ่าน">
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="รหัสผ่าน" value="<?php echo $row['confirmpassword']; ?>">
                         </div>
 
                         <div class="form-group">
                            <label for="exampleInputName">ที่อยู่</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ที่อยู่">
+                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ที่อยู่" value="<?php echo $row['address']; ?>">
 
                         </div>
                      </form>
               </div>
               <div class="modal-footer">
-                <button  type="Submit" name="Submit" class="tt" data-dismiss="modal">Save</button>
-                <button type="reset" name="cancle" class="aa" data-dismiss="modal">Close</button>
+                <input  type="Submit" name="Save" class="tt btn" data-dismiss="modal"></input>
+                <input type="reset" name="Close" class="aa btn " data-dismiss="modal"></input>
               </div>
             </div>
           </div>
@@ -244,7 +256,13 @@
               </div>
             </div>
 
-
+            <h5>ที่อยู่</h5>
+            <div class="w3-row w3-section">
+              <div class="w3-col" style="width:50px"><i class='fas fa-id-card-alt' style='font-size:30px'></i></div>
+              <div class="w3-rest">
+                <text class="ss form-control"><?php echo $row['address']; ?></text>
+              </div>
+            </div>
            
           </div>
 
@@ -253,12 +271,7 @@
 
       </div>
     </div>
-  </div>
-  
-  <?php
-  }
-  ?>
-
+  </div> 
 
 
 

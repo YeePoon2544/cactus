@@ -10,7 +10,7 @@ session_start();
 <head>
 
   <title>
-  Soil &mdash; ดิน
+    Soil &mdash; ดิน
   </title>
 </head>
 <style>
@@ -31,7 +31,7 @@ session_start();
 
   }
 
-  .img{
+  .img {
     border-radius: 15px 20px 10px;
     padding: 5px;
     background-color: rgb(94, 74, 46);
@@ -76,14 +76,15 @@ session_start();
 
 
   .product-item {
-   float: left;
-   background: #e0e0e0;
+    float: left;
+    background: #e0e0e0;
     margin: 15px 15px 0px 0px;
-    border: #e0e0e0  2px solid;
+    border: #e0e0e0 2px solid;
     width: 30%;
-    
+
   }
-  .btnAddAction{
+
+  .btnAddAction {
     float: right;
     font-size: 20px;
     color: #FFFFFF;
@@ -94,7 +95,8 @@ session_start();
     border: #2E8B57 1px solid;
     border-radius: 20px;
   }
-  .product-quantity{
+
+  .product-quantity {
     padding: 5px 10px;
     border-radius: 3px;
     border: #e0e0e0 1px solid;
@@ -102,8 +104,6 @@ session_start();
     text-align: center;
     margin-left: 51%;
   }
- 
- 
 </style>
 
 <body>
@@ -123,34 +123,37 @@ session_start();
 
 
   ?>
-   <div class="product-item">
-        <form action="#" class="grid">
-          <div class="product-image">
-            <img src="upload/<?php echo $row ['image']; ?>" alt="image" class="img">
-          </div>
-          <div class="product-title-footer">
-            <div class="product-title"><?php echo $row["soilname"];?></div>
-            <div class="product-details"> - <?php echo $row["soildetail"];?></div>
-            <div class="product-price"><?php echo $row["soilprice"];?> THB </div>
+    <div class="product-item">
+       <form action="manage_cart.php" method="POST">
+        <div class="product-image">
+          <img src="upload/<?php echo $row['image']; ?>" alt="image" class="img">
+        </div>
+        <div class="product-title-footer">
+          <div  name="productname" class="product-title"><?php echo $row["productname"]; ?></div>
+          <div class="product-details"> - <?php echo $row["soildetail"]; ?></div>
+          <div name="productprice" class="product-price"><?php echo $row["productprice"]; ?> THB </div>
 
-            <div class="cart-action">
-            <?php
-            if (isset($_SESSION['user_ID'])) { ?>
-              <input type="text" class="product-quantity" name="quantity" value="1" size="2">
-              <input type="Submit" class="btnAddAction" value="สั่งซื้อสินค้า">
-              <?php } else {
-                echo "";
-              }
-              ?>
+          <input type="hidden" name="productname" value="<?php echo $row['productname']; ?>">
+          <input type="hidden" name="productprice" value="<?php echo $row['productprice']; ?>">
+          <!-- <input type="text" class="product-quantity" name="quantity" value="1" size="2"> -->
+          <?php
+          if (isset($_SESSION['User_ID'])) { ?>
+            <input type="Submit" name="Add_To_Cart" class="btnAddAction" value="หยิบลงตะกร้า">
 
-            </div>
-          </div>
-        </form>
-      </div>
+          <?php } else {
+            echo "";
+          }
+          ?>
+
+
+        </div>
+    </div>
+    </form>
+    </div>
 
   <?php
-    }
-  
+  }
+
 
   ?>
 

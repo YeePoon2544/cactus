@@ -16,7 +16,7 @@
 
             $row = mysqli_fetch_array($result);
 
-            $_SESSION['user_ID'] = $row['user_ID'];
+            $_SESSION['User_ID'] = $row['User_ID'];
             $_SESSION['username'] = $row['name'] ." " .$row['lastname'];
             $_SESSION['userlevel'] = $row['userlevel'];
 

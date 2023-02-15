@@ -2,9 +2,9 @@
 include('../connect/connect.php');
 
 $compost_ID = $_GET['ID'];
-$compostname = $_POST['compostname'];
+$productname = $_POST['productname'];
 $compostdetail = $_POST['compostdetail'];
-$compostprice = $_POST['compostprice'];
+$productprice = $_POST['productprice'];;
 
 //เช็คว่ามีรูปมั้ย
 if (!empty($_FILES['image']['tmp_name'])) {
@@ -13,10 +13,10 @@ if (!empty($_FILES['image']['tmp_name'])) {
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
     move_uploaded_file($_FILES["image"]["tmp_name"], "../upload/" . $newfilename);
-    $sql = ("UPDATE compost SET compostname = '$compostname', compostdetail = '$compostdetail',compostprice = '$compostprice', image='$newfilename' WHERE compost_ID = $compost_ID ");
+    $sql = ("UPDATE compost SET productname = '$productname', compostdetail = '$compostdetail',productprice = '$productprice', image='$newfilename' WHERE compost_ID = $compost_ID ");
     $result = mysqli_query($conn, $sql);
 }
-$sql = ("UPDATE compost SET compostname = '$compostname', compostdetail = '$compostdetail',compostprice = '$compostprice' WHERE compost_ID = $compost_ID ");
+$sql = ("UPDATE compost SET productname = '$productname', compostdetail = '$compostdetail',productprice = '$productprice' WHERE compost_ID = $compost_ID ");
 $result = mysqli_query($conn, $sql);
 
 echo '

@@ -7,12 +7,12 @@ if (!empty($_FILES['image']['tmp_name'])) {
     $tmp_name = $_FILES['image']['tmp_name'];
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
-    $compostname = $_POST['compostname'];
+    $productname = $_POST['productname'];
     $compostdetail = $_POST['compostdetail'];
-    $compostprice = $_POST['compostprice'];
+    $productprice = $_POST['productprice'];
 
-    $sql  = "INSERT INTO compost (compostname,compostdetail,compostprice,image )
-         VALUES('$compostname','$compostdetail','$compostprice','$newfilename')";
+    $sql  = "INSERT INTO compost (productname,compostdetail,productprice,image )
+         VALUES('$productname','$compostdetail','$productprice','$newfilename')";
     $result = mysqli_query($conn, $sql);
 
     //upload image in folder

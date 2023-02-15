@@ -78,7 +78,7 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class='fas fa-pen' style='font-size:36px'></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="soilname" type="text" placeholder="ชื่อดิน" required>
+                <input class="w3-input w3-border" name="productname" type="text" placeholder="ชื่อดิน" required>
             </div>
         </div>
 
@@ -94,7 +94,7 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class='fas fa-dollar-sign' style='font-size:36px'></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="soilprice" type="text" placeholder="ราคาดิน" required>
+                <input class="w3-input w3-border" name="productprice" type="text" placeholder="ราคาดิน" required>
             </div>
         </div>
 

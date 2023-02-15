@@ -2,9 +2,9 @@
 include('../connect/connect.php');
 
 $Cactus_ID = $_GET['ID'];
-$Cactusname = $_POST['Cactusname'];
+$productname = $_POST['productname'];
 $Cactusdetail = $_POST['Cactusdetail'];
-$Cactusprice = $_POST['Cactusprice'];
+$productprice = $_POST['productprice'];
 
 //เช็คว่ามีรูปมั้ย
 if (!empty($_FILES['image']['tmp_name'])) {
@@ -13,10 +13,10 @@ if (!empty($_FILES['image']['tmp_name'])) {
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
     move_uploaded_file($_FILES["image"]["tmp_name"], "../upload/" . $newfilename);
-    $sql = ("UPDATE cactus SET Cactusname = '$Cactusname', Cactusdetail = '$Cactusdetail',Cactusprice = '$Cactusprice', image='$newfilename' WHERE Cactus_ID= $Cactus_ID ");
+    $sql = ("UPDATE cactus SET productname = '$productname', Cactusdetail = '$Cactusdetail',productprice = '$productprice', image='$newfilename' WHERE Cactus_ID= $Cactus_ID ");
     $result = mysqli_query($conn, $sql);
 }
-$sql = ("UPDATE cactus SET Cactusname = '$Cactusname', Cactusdetail = '$Cactusdetail',Cactusprice = '$Cactusprice' WHERE Cactus_ID= $Cactus_ID ");
+$sql = ("UPDATE cactus SET Cactusname = '$Cactusname', Cactusdetail = '$Cactusdetail',productprice = '$productprice' WHERE Cactus_ID= $Cactus_ID ");
 $result = mysqli_query($conn, $sql);
 echo '
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>

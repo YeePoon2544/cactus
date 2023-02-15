@@ -7,29 +7,29 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         if(isset($_SESSION['cart']))
         {
-            $myitems=array_column($_SESSION['cart'],'Cactusname');
-            if(in_array($_POST['Cactusname'],$myitems))
+            $myitems=array_column($_SESSION['cart'],'productname');
+            if(in_array($_POST['productname'],$myitems))
             {
                 echo"<script>
-                alert('เพิ่มสินค้าส่ตระกร้า');
+                alert('เพิ่มสินค้าลงตะกร้า');
                 window.location.href='index.php?Menu=3&Submenu=buyorder';
                 </script>";
             }
             else
             {
             $count=count($_SESSION['cart']);
-            $_SESSION['cart'][$count]=array('Cactusname'=>$_POST['Cactusname'],'Cactusprice'=>$_POST['Cactusprice'],'Quantity'=>1);
+            $_SESSION['cart'][$count]=array('productname'=>$_POST['productname'],'productprice'=>$_POST['productprice'],'Quantity'=>1);
             echo"<script>
-            alert('เพิ่มสินค้าส่ตระกร้า');
+            alert('เพิ่มสินค้าลงตะกร้า');
             window.location.href='index.php?Menu=3&Submenu=buyorder';
             </script>";
         }
         }
         else
         {
-            $_SESSION['cart'][0]=array('Cactusname'=>$_POST['Cactusname'],'Cactusprice'=>$_POST['Cactusprice'],'Quantity'=>1);
+            $_SESSION['cart'][0]=array('productname'=>$_POST['productname'],'productprice'=>$_POST['productprice'],'Quantity'=>1);
             echo"<script>
-            alert('เพิ่มสินค้าส่ตระกร้า');
+            alert('เพิ่มสินค้าลงตะกร้า');
             window.location.href='index.php?Menu=3&Submenu=buyorder';
             </script>";
         }
@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         foreach($_SESSION['cart'] as $key => $value)
         {
-            if($value['title']==$_POST['title'])
+            if($value['productname']==$_POST['productname'])
             {
                 unset($_SESSION['cart'][$key]);
                 $_SESSION['cart']=array_values($_SESSION['cart']);
@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     if (isset($_POST['Mod_Quantity'])) {
         foreach ($_SESSION['cart'] as $key => $value) {
-            if ($value['title'] == $_POST['title']) {
+            if ($value['productname'] == $_POST['productname']) {
                 $_SESSION['cart'][$key]['Quantity']=$_POST['Mod_Quantity'];
                 // print_r($_SESSION['cart']);
                 echo "<script>

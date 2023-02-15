@@ -6,12 +6,12 @@ if (!empty($_FILES['image']['tmp_name'])) {
     $tmp_name = $_FILES['image']['tmp_name'];
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
-    $Cactusname = $_POST['Cactusname'];
+    $productname = $_POST['productname'];
     $Cactusdetail = $_POST['Cactusdetail'];
-    $Cactusprice = $_POST['Cactusprice'];
+    $productprice = $_POST['productprice'];
 
-    $sql  = "INSERT INTO cactus (Cactusname,Cactusdetail,Cactusprice,image )
-    VALUES('$Cactusname','$Cactusdetail','$Cactusprice','$newfilename')";
+    $sql  = "INSERT INTO cactus (productname,Cactusdetail,productprice,image )
+    VALUES('$productname','$Cactusdetail','$productprice','$newfilename')";
     $result = mysqli_query($conn, $sql);
 
     //upload file in folder

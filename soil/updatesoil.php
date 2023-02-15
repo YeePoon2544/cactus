@@ -2,9 +2,9 @@
 include('../connect/connect.php');
 
 $soil_ID = $_GET['ID'];
-$soilname = $_POST['soilname'];
+$productname = $_POST['productname'];
 $soildetail = $_POST['soildetail'];
-$soilprice = $_POST['soilprice'];
+$productprice = $_POST['productprice'];
 
 //เช็คว่ามีรูปมั้ย
 if (!empty($_FILES['image']['tmp_name'])) {
@@ -13,10 +13,10 @@ if (!empty($_FILES['image']['tmp_name'])) {
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
     move_uploaded_file($_FILES["image"]["tmp_name"], "../upload/" . $newfilename);
-    $sql = ("UPDATE soil SET soilname = '$soilname', soildetail = '$soildetail',soilprice = '$soilprice', image='$newfilename' WHERE soil_ID= $soil_ID ");
+    $sql = ("UPDATE soil SET productname = '$productname', soildetail = '$soildetail',productprice = '$productprice', image='$newfilename' WHERE soil_ID= $soil_ID ");
     $result = mysqli_query($conn, $sql);
 }
-$sql = ("UPDATE soil SET soilname = '$soilname', soildetail = '$soildetail',soilprice = '$soilprice' WHERE soil_ID= $soil_ID ");
+$sql = ("UPDATE soil SET productname = '$productname', soildetail = '$soildetail',productprice = '$productprice' WHERE soil_ID= $soil_ID ");
 $result = mysqli_query($conn, $sql);
 
 

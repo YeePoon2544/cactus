@@ -88,9 +88,9 @@ while ($row = mysqli_fetch_array($result)) {
         <tr>
             <td><?php echo $row ['soil_ID']; ?></td>
             <td><img id="showimg" src="upload/<?php echo $row ['image']; ?>" style="height:120px; width:100px;"></td>
-            <td><?php echo $row ['soilname']; ?></td>
+            <td><?php echo $row ['productname']; ?></td>
             <td><?php echo$row ['soildetail']; ?></td>
-            <td><?php echo $row ['soilprice']; ?></td>
+            <td><?php echo $row ['productprice']; ?></td>
             <td><a href='admin.php?Menu=2&Submenu=editsoil&ID=<?php echo $row['soil_ID']; ?>'><button type="button" class="btn btn-warning"><i class='far fa-edit' style='font-size:22px'></i></button></a></td>
             <td><a href='soil/deletesoil.php?ID=<?php echo  $row ['soil_ID']; ?>'><button type="button" class="btn btn-danger"><i class='fas fa-eraser' style='font-size:22px'></i></button></a></td>
 

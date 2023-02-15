@@ -84,9 +84,9 @@ while ($row = mysqli_fetch_array($result)) {
         <tr>
             <td><?php echo $row['compost_ID']; ?></td>
             <td><img id="showimg" src="upload/<?php echo $row['image']; ?>" style="height:120px; width:100px;"></td>
-            <td><?php echo $row['compostname']; ?></td>
+            <td><?php echo $row['productname']; ?></td>
             <td><?php echo $row['compostdetail']; ?></td>
-            <td><?php echo $row['compostprice']; ?></td>
+            <td><?php echo $row['productprice']; ?></td>
             <td><a href='admin.php?Menu=3&Submenu=editcompost&ID=<?php echo $row['compost_ID']; ?>'><button type="button" class="btn btn-warning"><i class='far fa-edit' style='font-size:22px'></i></button></a></td>
             <td><a href='compost/deletecompost.php?ID=<?php echo $row['compost_ID']; ?>'><button type="button" class="btn btn-danger"><i class='fas fa-eraser' style='font-size:22px'></i></button></a></td>
         </tr>

@@ -6,12 +6,12 @@ if (!empty($_FILES['image']['tmp_name'])) {
     $tmp_name = $_FILES['image']['tmp_name'];
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
-    $soilname = $_POST['soilname'];
+    $productname = $_POST['productname'];
     $soildetail = $_POST['soildetail'];
-    $soilprice = $_POST['soilprice'];
+    $productprice = $_POST['productprice'];
 
-    $sql  = "INSERT INTO soil (soilname,soildetail,soilprice,image )
-           VALUES('$soilname','$soildetail','$soilprice','$newfilename')";
+    $sql  = "INSERT INTO soil (productname,soildetail,productprice,image )
+           VALUES('$productname','$soildetail','$productprice','$newfilename')";
     $result = mysqli_query($conn, $sql);
 
     //upload file in folder

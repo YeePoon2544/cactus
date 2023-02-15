@@ -33,16 +33,17 @@
     </title>
 </head>
 <style>
-     body {
+    body {
         font-family: 'Prompt', sans-serif;
 
     }
+
     .pp {
         background-color: #FAFAD2;
         width: 90%;
         padding: 20px;
         margin-top: 15%;
-    
+
 
     }
 
@@ -69,60 +70,56 @@
         width: 70%;
         text-align: center;
         font-size: 18px;
-
+    }
+    th{
+        background-color: cadetblue;
     }
 </style>
 
 <body>
-   
+
     <div class="container">
-   
-                <div class="pp">
-                    <div class="row justify-content-between">
 
-                    </div>
+        <div class="pp">
+            <div class="row justify-content-between">
 
-                    <div class="vv">
-                        <h5><b><i class='fas fa-dollar-sign' style='font-size:30px'></i> ประวัติการซื้อ</b></h5>
-                    </div>
-
-
-
-
-                    <table class="table table-bordered" align="center" width=65% border=1 >
-                        <tr align="center" bgcolor="#DB7093">
-                            <th>รหัสสินค้า</th>
-                            <th>รายการสินค้า</th>
-                            <th>ราคา</th>
-                        </tr>
-                        <tr align="center" bgcolor="#FFC0CB">
-                            <td>1</td>
-                            <td>ดินปลูกต้นแคคตัส สูตรเริ่มปลูกหรือต้นอายุน้อย</td>
-                            <td>45</td>
-                        </tr>
-                        <tr align="center" bgcolor="#FFC0CB">
-                            <td>2</td>
-                            <td>ฮาโวเทียหยดน้ำ</td>
-                            <td>65</td>
-                        </tr>
-                        <tr align="center" bgcolor="#FFC0CB">
-                            <td>3</td>
-                            <td>Cactus BLOOM</td>
-                            <td>50</td>
-                        </tr>
-                            
-
-
-
-
-                </div>
             </div>
 
-        </div>
+            <div class="vv">
+                <h5><b><i class='fas fa-dollar-sign' style='font-size:30px'></i> ประวัติการซื้อ</b></h5>
+            </div>
 
-    </div>
-    <!-- /.untree_co-section -->
+            <table class="table table-bordered" align="center" width=65% border=1 cellpadding=4 >
+                <tr align="center">
+                
+                    <th >รหัสสินค้าที่สั่งซื้อ</th>
+                    <th>ชื่อสินค้า</th>
+                    <th>ราคา</th>
+                    <th>จำนวน</th>
+                    <th>เวลา</th>
 
+                </tr>
+                <?php
+                include('connect/connect.php');
+                $sql = "SELECT * FROM  user_orders ";
+                $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($result)) {
+                ?>
+                    <tr>
+                        <td><?php echo $row['Order_ID']; ?></td>
+                        <td><?php echo $row['productname']; ?></td>
+                        <td><?php echo $row['productprice']; ?></td>
+                        <td><?php echo $row['Quantity']; ?></td>
+                        <td><?php echo $row['time_order']; ?></td>
+
+                    </tr>
+                <?php
+                }
+                mysqli_close($conn); //ปิดการเชื่อมต่อฐานข้อมูล
+
+                ?>
+
+            </table>
 
 
 

@@ -135,7 +135,7 @@ if ($Menu == "1") {
   .menu {
 
     position: relative;
-    width: 58%;
+    width: 50%;
     border-radius: 7px;
   }
 
@@ -166,18 +166,6 @@ if ($Menu == "1") {
 
               <li><a href='index.php?Menu=1&Submenu=home' class="sub-menu" onclick="location">หน้าหลัก</a></li>
               <li><a href='index.php?Menu=2&Submenu=cargo' class="sub-menu" onclick="location">สินค้า</a></li>
-
-
-              <?php
-
-              if (isset($_SESSION['cart'])) {
-                $count = count($_SESSION['cart']);
-                echo "<span id=\"cart_count\" class=\"text-warning bg-light\">$count</span>";
-              } else {
-                echo "<span id=\"cart_count\" class=\"text-warning bg-light\">0</span>";
-              }
-
-              ?>
              
 
               <?php
@@ -188,7 +176,7 @@ if ($Menu == "1") {
               ?>
               <li>
               <?php
-                if (isset($_SESSION['user_ID'])) { ?>
+                if (isset($_SESSION['User_ID'])) { ?>
                  <a href='index.php?Menu=3&Submenu=buyorder' class="sub-menu" onclick="location">ตะกร้าสินค้าของฉัน (<?php echo $count; ?>)</a></li>
 
                  <?php } else { ?>
@@ -199,7 +187,7 @@ if ($Menu == "1") {
               <li><a href='index.php?Menu=4&Submenu=qa' class="sub-menu" onclick="location">ติดต่อสอบถาม</a></li>
               <li class="has-children">
                 <?php
-                if (isset($_SESSION['user_ID'])) { ?>
+                if (isset($_SESSION['User_ID'])) { ?>
                   <span class="dd">ผู้ใช้งาน : <?php echo $_SESSION['username']; ?></span>
                   <ul class="dropdown">
                     <li><a href="index.php?Menu=5&Submenu=contact">ข้อมูลส่วนตัว</a></li>
