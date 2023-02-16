@@ -36,14 +36,14 @@ if ($Menu == "1") {
   $selected4 = "class='selected'";
   if ($Submenu == "indexorder") {
     $Fileshow = "order/indexorder.php";
+  } else if ($Submenu == "detailorder") {
+    $Fileshow = "order/detailorder.php";
   }
 } 
 else if ($Menu == "5") {
   $selected4 = "class='selected'";
   if ($Submenu == "indexsales") {
     $Fileshow = "sales/indexsales.php";
-  } else if ($Submenu == "qa") {
-    $Fileshow = "qa.php";
   }
 }else {
   $Fileshow = "adminwelcome.php";

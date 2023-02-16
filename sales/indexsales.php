@@ -33,105 +33,18 @@
     </title>
 </head>
 <style>
-     body,h5 {
+    body {
+
         font-family: 'Prompt', sans-serif;
-
-    }
-    .pp {
-        background-color: #D8BFD8;
-        width: 90%;
-        padding: 20px;
-        margin-top: 8%;
-        
-
-    }
-
-    h5 {
-        padding: 2%;
-        font-size: 30px;
-        text-align: center;
-
-    }
-
-    .vv {
-        background-color: darkslateblue;
-        width: 20%;
-    }
-
-    p {
-        margin-top: 1%;
-
-    }
-
-    table {
-        border-collapse: collapse;
-        width: 70%;
-        text-align: center;
-        font-size: 18px;
 
     }
 </style>
 
 <body>
-    
-    <div class="container">
-        
 
-        <div class="pp">
-            <div class="row justify-content-between">
-
-            </div>
-
-            <h5><b>ยอดขายประจำเดือน</b></h5>
-
-            <table class="table table-bordered" align="center" width=65% border=1>
-                <tr align="center" bgcolor="#B03060">
-                    <th>รหัสสินค้า</th>
-                    <th>รายการสินค้า</th>
-                    <th>ราคา</th>
-                </tr>
-                <tr align="center" bgcolor="#FFC0CB">
-                    <td>1</td>
-                    <td>ดินปลูกต้นแคคตัส สูตรเริ่มปลูกหรือต้นอายุน้อย</td>
-                    <td>45</td>
-                </tr>
-                <tr align="center" bgcolor="#FFC0CB">
-                    <td>2</td>
-                    <td>ฮาโวเทียหยดน้ำ</td>
-                    <td>65</td>
-                </tr>
-                <tr align="center" bgcolor="#FFC0CB">
-                    <td>3</td>
-                    <td>Cactus BLOOM</td>
-                    <td>50</td>
-                </tr>
-
-
-
-
-
-        </div>
-    </div>
+    <div>
 
     </div>
-
-    </div>
-    <!-- /.untree_co-section -->
-
-
-
-
-
-
-
-
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/tiny-slider.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/counter.js"></script>
-    <script src="js/custom.js"></script>
 </body>
 
 </html>

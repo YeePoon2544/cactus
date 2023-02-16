@@ -120,7 +120,7 @@ session_start();
 <body>
   
 <?php
-  $user = $_SESSION['User_ID'];
+
   $sql = "SELECT * FROM  user WHERE user_ID = '$user_ID'";
   $result = mysqli_query($conn, $sql);
   $num_row = $result->num_rows;
@@ -159,17 +159,17 @@ session_start();
                 
               <form>
                         <div class="form-group">
-                           <label for="exampleInputName">ชื่อ</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล" value="<?php echo $row['name']; ?> <?php echo $row['lastname']; ?>">
+                           <label >ชื่อ</label>
+                           <input type="text" class="form-control"   placeholder="กรุณากรอกชื่อ-นามสกุล" value="<?php echo $_SESSION['username']?>" name="name">
 
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                            <label for="exampleInputName">ชื่อ</label>
                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล" value="<?php echo $row['lastname']; ?> <?php echo $row['lastname']; ?>">
 
                         </div>
-                        
+                         -->
                         <div class="form-group">
                            <label for="exampleInputName">ชื่อผู้ใช้งาน</label>
                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ชื่อผู้ใช้งาน" value="<?php echo $row['username']; ?>">
@@ -217,7 +217,7 @@ session_start();
             <div class="w3-row w3-section">
               <div class="w3-col" style="width:50px"><i class='fas fa-user-alt' style='font-size:30px'></i></div>
               <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['name']; ?> <?php echo $row['lastname']; ?></text>
+                <input class="form-control" value="<?php echo $_SESSION['username']?>" name="name" ></input>
               </div>
             </div>
 
@@ -225,7 +225,7 @@ session_start();
             <div class="w3-row w3-section">
               <div class="w3-col" style="width:50px"><i class='fas fa-user-alt' style='font-size:30px'></i></div>
               <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['username']; ?></text>
+                <input class="form-control" value="<?php echo  $_SESSION['user']?>" name="username" ></input>
               </div>
             </div>
 
@@ -234,7 +234,7 @@ session_start();
             <div class="w3-row w3-section">
               <div class="w3-col" style="width:50px"><i class='fas fa-envelope-open' style='font-size:36px'></i></div>
               <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['mail']; ?></text>
+                <input class="form-control" value="<?php echo  $_SESSION['mail']?>" name="mail" ></input>
               </div>
             </div>
           </div>
@@ -244,15 +244,15 @@ session_start();
             <div class="w3-row w3-section">
               <div class="w3-col" style="width:50px"><i class='fas fa-phone-alt' style='font-size:30px'></i></div>
               <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['telephone']; ?></text>
-              </div>
+                <input class="form-control"value="<?php echo  $_SESSION['telephone']?>" name="telephone" > </input>
+              </div> 
             </div>
 
-            <h5>รหัสผ่าน</h5>
+            <!-- <h5>รหัสผ่าน</h5>
             <div class="w3-row w3-section">
               <div class="w3-col" style="width:50px"><i class='fas fa-id-card-alt' style='font-size:30px'></i></div>
               <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['confirmpassword']; ?></text>
+                <text class="form-control"><?php echo $row['confirmpassword']; ?></text>
               </div>
             </div>
 
@@ -260,9 +260,9 @@ session_start();
             <div class="w3-row w3-section">
               <div class="w3-col" style="width:50px"><i class='fas fa-id-card-alt' style='font-size:30px'></i></div>
               <div class="w3-rest">
-                <text class="ss form-control"><?php echo $row['address']; ?></text>
+                <text class="form-control"><?php echo $row['address']; ?></text>
               </div>
-            </div>
+            </div> -->
            
           </div>
 

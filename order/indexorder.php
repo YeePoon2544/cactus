@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -65,30 +68,28 @@
 
 <table class="table table-bordered" align="center" width=65% border=1 cellpadding=4>
     <tr align="center">
-        <th>รหัสลูกค้า</th>
+
         <th>ชื่อลูกค้า</th>
         <th>รายละเอียดคำสั่งซื้อ</th>
-  
+
     </tr>
-    
-        <tr>
-            <td></td>
-            <td></td>
-            <td><a href='.php?ID=<?php echo $row['']; ?>'>กดดูรายละเอียด</a></td>
-        </tr>
-    
+    <?php
+    include('connect/connect.php');
+    $sql = "SELECT * FROM tbl_orders  ";
+    $result =  mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+
+    ?>
+            <tr>
+                <td><?= $row['name'] ?></td>
+                <td><a href='admin.php?Menu=4&Submenu=detailorder'>กดดูรายละเอียด</a></td>
+
+            </tr>
+    <?php }
+     ?>
 
 </table>
-<?php mysqli_close($conn) ?>
-<script>
-    var loadFile = function(event) {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var output = document.getElementById('showimg');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    };
-</script>
+
+
 
 </html>

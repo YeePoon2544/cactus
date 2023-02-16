@@ -9,15 +9,15 @@
         
 
         $sql = "SELECT * FROM user WHERE username = '".$username."' AND password = '".$password."' ";
+        $result = mysqli_query($conn, $sql); 
+        $row = mysqli_fetch_array($result);
 
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) == 1) {
-
-            $row = mysqli_fetch_array($result);
-
+        if (mysqli_num_rows($result) > 0 ) {
             $_SESSION['User_ID'] = $row['User_ID'];
             $_SESSION['username'] = $row['name'] ." " .$row['lastname'];
+            $_SESSION['user'] = $row['username'];
+            $_SESSION['mail'] = $row['mail'];
+            $_SESSION['telephone'] = $row['telephone'];
             $_SESSION['userlevel'] = $row['userlevel'];
 
             echo '

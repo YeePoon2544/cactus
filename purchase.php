@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $image = $_POST['image'];
 
                 $query1 = "INSERT INTO tbl_orders SET 
+                    User_ID = {$_SESSION['User_ID']},
                     order_date = '$order_date',
                     status = '$status',
                     total = '$total',

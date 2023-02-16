@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!-- /*
 * Template Name: Property
 * Template Author: Untree.co
@@ -101,7 +104,8 @@
                 </tr>
                 <?php
                 include('connect/connect.php');
-                $sql = "SELECT * FROM  user_orders ";
+                $user = $_SESSION['User_ID'] ;
+                $sql = "SELECT * FROM  user_orders WHERE User_ID = '$user' ";
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)) {
                 ?>
